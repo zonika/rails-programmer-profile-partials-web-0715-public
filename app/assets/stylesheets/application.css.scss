@@ -34,3 +34,28 @@ body {
 .theme-showcase > p > .btn {
   margin: 5px 0;
 }
+
+.programmer-info {
+  font-size: 20px;
+}
+
+.programmer-item {
+  font-size: 35px;
+}
+
+.programmer-item:hover {
+  background-color: #ccc;
+}
+
+ul a:hover {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+.glyphicon-heart {
+  font-size: 0.65em;
+  color: red;
+}

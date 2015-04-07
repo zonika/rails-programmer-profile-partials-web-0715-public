@@ -18,11 +18,11 @@
     </p>
 
     <p>
-    <strong>Famous For:</strong> <%= @programmer.claim_to_fame %>
+    <strong>Claim To Fame:</strong> <%= @programmer.claim_to_fame %>
     </p>
 
     <p>
-    <strong>Wikipedia Page:</strong> <%= link_to "Learn more about #{@programmer.name}", @programmer.wikipedia_page, target: '_blank' %>
+    <%= link_to "Learn more about #{@programmer.name}", @programmer.wikipedia_page, target: '_blank' %>
     </p>
   </div>
 </div>

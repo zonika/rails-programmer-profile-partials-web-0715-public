@@ -1,4 +1,5 @@
-require "spec_helper"
+require 'rails_helper'
+require 'spec_helper'
 
 describe "the navbar partial" do
   it "renders the navbar correctly" do

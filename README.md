@@ -30,7 +30,8 @@ Let's say we have a blog app that allows you to create and edit blog posts. Here
   <%= f.submit %>
 <% end %>
 
-
+```
+```ruby
 # app/views/posts/edit.html.erb
 <h1>Edit a post</h1>
 
@@ -43,6 +44,7 @@ Let's say we have a blog app that allows you to create and edit blog posts. Here
 
   <%= f.submit %>
 <% end %>
+
 ```
 
 Clearly, the code for these two views is not exactly DRY. In fact, it is identical except for the `h1`. With a partial for the form, we can get rid of all this repeated code:
@@ -59,13 +61,15 @@ Clearly, the code for these two views is not exactly DRY. In fact, it is identic
   <%= f.submit %>
 <% end %>
 
-
+```
+```ruby
 # app/views/posts/new.html.erb
 <h1>Make a new post!</h1>
 
 <%= render 'form' %>
 
-
+```
+```ruby
 # app/views/posts/edit.html.erb
 <h1>Edit a post</h1>
 

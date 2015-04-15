@@ -49,7 +49,6 @@ Clearly, the code for these two views is not exactly DRY. In fact, it is identic
 
 ```ruby
 # app/views/posts/_form.html.erb
-
 <%= form_for @post do |f| %>
   <%= f.label :title %>
   <%= f.text_field :title %>
@@ -59,6 +58,18 @@ Clearly, the code for these two views is not exactly DRY. In fact, it is identic
 
   <%= f.submit %>
 <% end %>
+
+
+# app/views/posts/new.html.erb
+<h1>Make a new post!</h1>
+
+<%= render 'form' %>
+
+
+# app/views/posts/edit.html.erb
+<h1>Edit a post</h1>
+
+<%= render 'form' %>
 
 ```
 

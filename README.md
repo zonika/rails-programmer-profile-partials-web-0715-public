@@ -1,40 +1,75 @@
-# Rails Programmer Profile Partials
+---
+tags: rails, partials
+languages: ruby
+resources: 4
+---
 
-## Description
+# Programmer Profiles App
 
-Add a short description of your app.
+We have a Rails app that showcases some of our favorite programmers. The landing page is an index of all the programmers, and users can click on each programmer to see his or her profile page. There's just one problem - the views are loaded with repetition and clunky iteration, and could use some serious refactoring. Your job is to clean up `programmers/index.html.erb` and `programmers/show.html.erb` by using partials.
 
-## Screenshots
+## Rendering Partials in Rails
 
-Add some spiffy screenshots of your app here.
+Partials (short for partial templates) do exactly what it sounds like - they render a part of a larger view. Using partials allows us to apply the principles of single responsiblity and DRY code to our ERB files.
 
-## Background
+### Example: Using Partials for Forms
 
-Why did you want to make this app? What was your development process
-like?
+Let's say we have a blog app that allows you to create and edit blog posts. Here's how your views for `new.html.erb` and `edit.html.erb` might look without partials:
 
-## Features
+```ruby
+# app/views/posts/new.html.erb
+<h1>Make a new post!</h1>
 
-Bullet point some of the key features of your app here.
+<%= form_for @post do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
 
-## Usage
+  <%= f.label :content %>
+  <%= f.text_field :content %>
 
-How do users use your app?
+  <%= f.submit %>
+<% end %>
 
-## Development/Contribution
 
-Explain how people can contribute to your app. How should they write tests?
-Any things in particular you'd like to see in pull requests?
+# app/views/posts/edit.html.erb
+<h1>Edit a post</h1>
 
-## Future
+<%= form_for @post do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
 
-What features are you currently working on? Only mention things that you
-actually are implementing. No pie-in-the-sky-never-gonna-happen stuff.
+  <%= f.label :content %>
+  <%= f.text_field :content %>
 
-## Author
+  <%= f.submit %>
+<% end %>
+```
 
-Link to your blog, twitter, etc!
+Clearly, the code for these two views is not exactly DRY. In fact, it is identical except for the `h1`. With a partial for the form, we can get rid of all this repeated code:
 
-## License
+```ruby
+# app/views/posts/_form.html.erb
 
-Rails Programmer Profile Partials is MIT Licensed. See LICENSE for details.
+<%= form_for @post do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+
+  <%= f.label :content %>
+  <%= f.text_field :content %>
+
+  <%= f.submit %>
+<% end %>
+
+```
+
+## Instructions
+
+
+
+## Bonus
+
+
+
+## Resources
+
+

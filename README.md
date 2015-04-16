@@ -51,6 +51,8 @@ Clearly, the code for these two views is not exactly DRY. In fact, it is identic
 
 ```ruby
 # app/views/posts/_form.html.erb
+# *** Note that the file name for the partial must begin with an underscore! ***
+
 <%= form_for @post do |f| %>
   <%= f.label :title %>
   <%= f.text_field :title %>
@@ -77,12 +79,45 @@ Clearly, the code for these two views is not exactly DRY. In fact, it is identic
 
 ```
 
+By using a partial for the form (`app/views/posts/_form.html.erb`), we can abstract away the repeated code. But how will one of these forms be a form to `update` a post and the other be a form to `create` a post if the forms are exactly the same? That's part of the awesomeness of Rails. Rails introspects on the object passed in to the form, in this case `@post`. If the object is `persisted?`, the form object generated will be for an `update` and the fields that already have values will be pre-populated with them. If not, it will be for a `create`.
+
+Another common situation in which partials are handy is when rendering collections. For example, in `app/views/posts/index.html.erb`, you can do the following iteration to render all the `@posts`:
+
+```ruby
+<h1>All the Posts!</h1>
+
+<% @posts.each do |post| %>
+  <div class="post">
+    Title: <%= post.title %>
+    Author: <%= post.auther.name %>
+
+    <p><%= post.content %></p>
+  </div>
+<% end %>
+
+```
+...or, you can use a partial for rendering a single post (move all the code in `div.post` over to `app/views/posts/_post.html.erb`), and change that entire `each` loop into just one line of code:
+
+`<%= render @posts %>`
+
+As long as `@post` was set to contain a collection of `Post` objects in the `index` action of the posts controller and your partial is in the right place with the right name, Rails takes care of all the rest!
+
+Now you'll make some partials to refactor our Programmer Profiles App.
+
+
 ## Instructions
 
+Fork and clone the lab. Run `bundle install` and `rake db:migrate`, then `rake db:migrate RAILS_ENV=test`. Next, seed the database with some programmers - run `rake db:seed` - and start the sever to see the app in the browser.
 
+Run `rspec` and make the tests pass one at a time! The app will continue to have the same functionality (keep checking it in the browser), but you'll be making the following partials to clean up the views:
+
+1. A partial to render the navbar.
+2. A partial to render all the programmers on the index page (see the example above!).
+3. A bonus partial to abstract away some of the repetition in `app/views/programmers/show.html.erb`. More details on that in the next section.
 
 ## Bonus
 
+This part is a little more complex than the previous two steps, and will require you to get a little more creative.
 
 
 ## Resources

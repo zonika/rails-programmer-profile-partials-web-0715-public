@@ -1,9 +1,3 @@
----
-tags: rails, partials
-languages: ruby
-resources: 4
----
-
 # Programmer Profiles App
 
 We have a Rails app that showcases some of our favorite programmers. The landing page is an index of all the programmers, and users can click on each programmer to see his or her profile page. There's just one problem - the views are loaded with repetition and clunky iteration, and could use some serious refactoring. Your job is to clean up `programmers/index.html.erb` and `programmers/show.html.erb` by using partials.

@@ -1,0 +1,3 @@
+<p>
+<strong> <%= attribute.to_s.split("_").map{|word|word.capitalize}.join(" ") %>:</strong> <%= programmer.send(attribute) %> <br>
+</p>

@@ -4,7 +4,7 @@ require 'spec_helper'
 describe "the navbar partial" do
   it "renders the navbar correctly" do
     render "layouts/navbar"
-   
+
     expect(response).to include('Programmers We L<span class="glyphicon glyphicon-heart"></span>ve')
   end
 end
@@ -39,7 +39,7 @@ describe "the programmers index page" do
 end
 
 # BONUS: Create a partial that renders a single attribute of a programmer
-xdescribe "the attribute partial" do
+describe "the attribute partial" do
   let(:programmer) { FactoryGirl.create(:programmer) }
 
   it "renders any attribute of the programmer" do
